@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnrvd8ht0u4ik"]
+
+[ext_resource type="PackedScene" uid="uid://cw564qmankkyx" path="res://Game/Scenes/turret_character.tscn" id="1_gj8w7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqeow"]
+albedo_color = Color(0.207843, 1, 0, 1)
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_oqeow"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gj8w7"]
+
+[node name="WhiteBox" type="Node3D"]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(99.4627, 0.000273431, 0.0350008, -0.128341, 0.211852, -0.158043, -0.0265295, 0.000253576, 131.999, -53.8762, -0.272269, 58.1313)
+use_collision = true
+material = SubResource("StandardMaterial3D_oqeow")
+
+[node name="StandardTurretBase" type="Node3D" parent="."]
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="StandardTurretBase"]
+transform = Transform3D(3.88781, 0, 0, 0, 3.88781, 0, 0, 0, 3.88781, 0.0531948, 6.18548, 0.0925354)
+mesh = SubResource("SphereMesh_oqeow")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="StandardTurretBase"]
+transform = Transform3D(4.43323, 0, 0, 0, 3.07744, 0, 0, 0, 4.43323, 0.0599859, 3.05598, 0.0894531)
+mesh = SubResource("CylinderMesh_gj8w7")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="StandardTurretBase"]
+transform = Transform3D(2.50916, 0, 0, 0, 1.15576, 0, 0, 0, 2.50916, 0.0531948, 6.99668, 0.0925354)
+mesh = SubResource("CylinderMesh_gj8w7")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="StandardTurretBase"]
+transform = Transform3D(5.36943, 0, 0, 0, 1.4793, 0, 0, 0, 5.36943, 0.0531948, 0.283624, 0.0925354)
+mesh = SubResource("CylinderMesh_gj8w7")
+
+[node name="TurretCharacter" parent="." instance=ExtResource("1_gj8w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.2681, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.948485, -0.0413988, 0.314106, 0.00848513, 0.99439, 0.105437, -0.316709, -0.0973404, 0.943515, -5.27732, 12.6201, 0)

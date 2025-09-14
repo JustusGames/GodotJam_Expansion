@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnupi7fhcfwr2"]
+
+[ext_resource type="Script" uid="uid://dau6t31p1eyax" path="res://Game/Scripts/standard_turret_design.gd" id="1_b5hph"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fujgv"]
+
+[node name="StandardTurret" type="Node3D" node_paths=PackedStringArray("FirePointLocatons")]
+script = ExtResource("1_b5hph")
+FirePointLocatons = [NodePath("FirePoint"), NodePath("FirePoint2")]
+
+[node name="Body" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884536, 0)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1.13342, -0.186894, 0, 0.60382, 0.350816, 0, 0, 0, 1.22155, 0.0117216, 0.326567, 0)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(0.705588, 0.034766, 0, -0.0146567, 1.67366, 0, 0, 0, 0.711639, 0.0117216, -0.0161877, 0)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.717011, 0, 0, 0, 0.41481, 0.147415, 0.884536, -0.602713)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.717011, 0, 0, 0, 0.41481, 0.147415, 0.884536, 0.619895)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1.67606, 0, 0, 0, 0.232138, 0, 0, 0, 0.279643, 1.21492, 0.884536, 0.619895)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1.67606, 0, 0, 0, 0.232138, 0, 0, 0, 0.279643, 1.21492, 0.884536, -0.591381)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1.93909, 0, 0, 0, 0.263444, -0.0866294, 0, 0.14134, 0.161468, 2.21359, 0.889244, -0.727979)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1.93909, 0, 0, 0, 0.264429, 0.0854944, 0, -0.139488, 0.162072, 2.21359, 0.882613, -0.443153)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1.93909, 0, 0, 0, 0.263444, -0.0866294, 0, 0.14134, 0.161468, 2.21359, 0.889244, 0.480702)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1.93909, 0, 0, 0, 0.264429, 0.0854944, 0, -0.139488, 0.162072, 2.21359, 0.882613, 0.765529)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.266142, 0, 0, 0, 0.763771, 0.119842, 0.884536, 1.04712)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.266142, 0, 0, 0, 0.763771, 0.119842, 0.884536, -1.11842)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.609434, 0, 0, 0, 1.95786, -0.748228, 0.884536, 0.0925354)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1.06825, 0, 0, 0, 1.95786, -1.50106, 0.884536, 0.0925354)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.176467, -0.977678, 0, 0.170317, 1.01298, -1.33387, 0.886412, -0.886681)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.180411, 0.953668, 0, -0.166135, 1.03562, -1.33303, 0.888789, 1.00605)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="FirePoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.678607, 0.723511, -3.16008)
+
+[node name="FirePoint2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.650156, 0.723511, -3.18198)
+
+[node name="FireRateTimer" type="Timer" parent="."]
+unique_name_in_owner = true
