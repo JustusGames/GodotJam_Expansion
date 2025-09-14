@@ -8,6 +8,26 @@
 script = ExtResource("1_b5hph")
 FirePointLocatons = [NodePath("FirePoint"), NodePath("FirePoint2")]
 
+[node name="BarrelRoot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.61464e-08, 0.879361, -2.19957)
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="BarrelRoot"]
+transform = Transform3D(1.93909, 0, 0, 0, 0.263444, -0.0866294, 0, 0.14134, 0.161468, 0.0140166, 0.00988346, -0.727979)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="BarrelRoot"]
+transform = Transform3D(1.93909, 0, 0, 0, 0.264429, 0.0854944, 0, -0.139488, 0.162072, 0.0140166, 0.00325245, -0.443153)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="BarrelRoot"]
+transform = Transform3D(1.93909, -4.44089e-16, 0, 0, 0.263444, -0.0866294, 0, 0.14134, 0.161468, 0.0140166, 0.00988346, 0.480702)
+mesh = SubResource("BoxMesh_fujgv")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="BarrelRoot"]
+transform = Transform3D(1.93909, 0, 0, 0, 0.264429, 0.0854944, 0, -0.139488, 0.162072, 0.0140166, 0.00325245, 0.765529)
+mesh = SubResource("BoxMesh_fujgv")
+
 [node name="Body" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
@@ -37,22 +57,6 @@ mesh = SubResource("BoxMesh_fujgv")
 
 [node name="CSGMesh3D11" type="CSGMesh3D" parent="Body"]
 transform = Transform3D(1.67606, 0, 0, 0, 0.232138, 0, 0, 0, 0.279643, 1.21492, 0.884536, -0.591381)
-mesh = SubResource("BoxMesh_fujgv")
-
-[node name="CSGMesh3D13" type="CSGMesh3D" parent="Body"]
-transform = Transform3D(1.93909, 0, 0, 0, 0.263444, -0.0866294, 0, 0.14134, 0.161468, 2.21359, 0.889244, -0.727979)
-mesh = SubResource("BoxMesh_fujgv")
-
-[node name="CSGMesh3D14" type="CSGMesh3D" parent="Body"]
-transform = Transform3D(1.93909, 0, 0, 0, 0.264429, 0.0854944, 0, -0.139488, 0.162072, 2.21359, 0.882613, -0.443153)
-mesh = SubResource("BoxMesh_fujgv")
-
-[node name="CSGMesh3D15" type="CSGMesh3D" parent="Body"]
-transform = Transform3D(1.93909, 0, 0, 0, 0.263444, -0.0866294, 0, 0.14134, 0.161468, 2.21359, 0.889244, 0.480702)
-mesh = SubResource("BoxMesh_fujgv")
-
-[node name="CSGMesh3D16" type="CSGMesh3D" parent="Body"]
-transform = Transform3D(1.93909, 0, 0, 0, 0.264429, 0.0854944, 0, -0.139488, 0.162072, 2.21359, 0.882613, 0.765529)
 mesh = SubResource("BoxMesh_fujgv")
 
 [node name="CSGMesh3D4" type="CSGMesh3D" parent="Body"]

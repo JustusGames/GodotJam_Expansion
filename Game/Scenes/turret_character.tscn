@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw564qmankkyx"]
+[gd_scene load_steps=9 format=3 uid="uid://cw564qmankkyx"]
 
 [ext_resource type="Script" uid="uid://ckfqsdw7e36c3" path="res://Game/Scripts/turret_character.gd" id="1_8qsus"]
 [ext_resource type="PackedScene" uid="uid://dnupi7fhcfwr2" path="res://Game/Scenes/standard_turret_art.tscn" id="1_ng2sk"]
 [ext_resource type="PackedScene" uid="uid://dhwe0ffpst6pq" path="res://Game/Scenes/basic_bullet.tscn" id="2_8v08b"]
+[ext_resource type="Script" uid="uid://boswcora5umu0" path="res://Game/Scripts/turret_camera.gd" id="3_l2n02"]
+[ext_resource type="Script" uid="uid://c0gkos5vfd1we" path="res://Interface/Scripts/hud.gd" id="5_qagab"]
+[ext_resource type="PackedScene" uid="uid://c0c3cphfu7a2g" path="res://Interface/Scenes/building_select_popup.tscn" id="6_x46a0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8qsus"]
 radius = 1.2036
@@ -15,7 +18,7 @@ script = ExtResource("1_8qsus")
 _basic_bullet = ExtResource("2_8v08b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.661489, 0.890782, 1.26378)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05991, 1.37174)
 shape = SubResource("SphereShape3D_8qsus")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
@@ -31,7 +34,22 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.22797, 2.12989)
 current = true
 fov = 63.9
+script = ExtResource("3_l2n02")
 
 [node name="StandardTurret" parent="." instance=ExtResource("1_ng2sk")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2632e-07, 0.611208, 0.010591)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("5_qagab")
+_building_pop_scene = ExtResource("6_x46a0")

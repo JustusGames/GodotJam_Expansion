@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnrvd8ht0u4ik"]
+[gd_scene load_steps=6 format=3 uid="uid://cnrvd8ht0u4ik"]
 
 [ext_resource type="PackedScene" uid="uid://cw564qmankkyx" path="res://Game/Scenes/turret_character.tscn" id="1_gj8w7"]
+[ext_resource type="PackedScene" uid="uid://cr6ik3hlc2dq6" path="res://Buildings/Scenes/build_spot.tscn" id="2_fujgv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqeow"]
 albedo_color = Color(0.207843, 1, 0, 1)
@@ -35,8 +36,27 @@ mesh = SubResource("CylinderMesh_gj8w7")
 transform = Transform3D(5.36943, 0, 0, 0, 1.4793, 0, 0, 0, 5.36943, 0.0531948, 0.283624, 0.0925354)
 mesh = SubResource("CylinderMesh_gj8w7")
 
-[node name="TurretCharacter" parent="." instance=ExtResource("1_gj8w7")]
+[node name="TurretCharacter" parent="." node_paths=PackedStringArray("_building_camera") instance=ExtResource("1_gj8w7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.2681, 0)
+_building_camera = NodePath("../BuildCamera3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.948485, -0.0413988, 0.314106, 0.00848513, 0.99439, 0.105437, -0.316709, -0.0973404, 0.943515, -5.27732, 12.6201, 0)
+
+[node name="BuildCamera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.9637, 0)
+projection = 1
+size = 66.786
+
+[node name="BuildSpot" parent="." instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8843, 0.146836, 0.299128)
+
+[node name="BuildSpot4" parent="." instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1157, 0.146836, 0.299128)
+
+[node name="BuildSpot2" parent="." instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115682, 0.146836, 16.2991)
+
+[node name="BuildSpot3" parent="." instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115682, 0.146836, -15.7009)
