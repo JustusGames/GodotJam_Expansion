@@ -1,5 +1,9 @@
 extends Control
 
+@onready var _healthbar:ProgressBar = get_node("%HealthBar")
+@onready var _energybar:ProgressBar = get_node("%EnergyBar")
+@onready var _ammo_count:Label = get_node("%AmmoLabel")
+@onready var _ammo_reload_label:Label = get_node("%AmmoReloadLabel")
 
 @export var _building_pop_scene:PackedScene
 var _current_pop_up:Control = null
@@ -27,3 +31,17 @@ func remove_menus():
 			_current_pop_up.disconnect("popup_building_selected",_on_popup_building_selected)
 		_current_pop_up.queue_free()
 	
+func update_energy(pAmount:float):
+	_energybar.value = pAmount
+
+func update_health(pAmount:float):
+	_healthbar.value = pAmount
+
+func update_ammo(pAmount:int):
+	_ammo_count.text = str(pAmount)
+
+func show_ammmo_reload_amount(pAmount:int):
+	_ammo_reload_label.text = "+" + str(pAmount)
+	_ammo_reload_label.modulate = Color(1.0, 1.0, 1.0)
+	await  get_tree().create_timer(1).timeout
+	_ammo_reload_label.modulate = Color(0.027, 0.043, 0.145)

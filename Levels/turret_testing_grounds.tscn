@@ -1,22 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnrvd8ht0u4ik"]
+[gd_scene load_steps=8 format=3 uid="uid://cnrvd8ht0u4ik"]
 
 [ext_resource type="PackedScene" uid="uid://cw564qmankkyx" path="res://Game/Scenes/turret_character.tscn" id="1_gj8w7"]
 [ext_resource type="PackedScene" uid="uid://cr6ik3hlc2dq6" path="res://Buildings/Scenes/build_spot.tscn" id="2_fujgv"]
+[ext_resource type="PackedScene" uid="uid://dtli4mtqhswl3" path="res://Game/Scenes/force_field_area_3d.tscn" id="3_2hn1u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqeow"]
 albedo_color = Color(0.207843, 1, 0, 1)
 roughness = 0.0
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_gj8w7"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_oqeow"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_gj8w7"]
+[sub_resource type="Environment" id="Environment_fujgv"]
+background_mode = 1
+background_color = Color(0.597023, 0.304808, 0.698917, 1)
 
 [node name="WhiteBox" type="Node3D"]
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(99.4627, 0.000273431, 0.0350008, -0.128341, 0.211852, -0.158043, -0.0265295, 0.000253576, 131.999, -53.8762, -0.272269, 58.1313)
+transform = Transform3D(99.4627, 0.000273431, 0.0350008, -0.128341, 0.211852, -0.158043, -0.0265295, 0.000253576, 131.999, -53.8762, -0.167289, 58.1313)
 use_collision = true
 material = SubResource("StandardMaterial3D_oqeow")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="."]
+transform = Transform3D(80, 0, 0, 0, 1.523, 0, 0, 0, 80, 0.0531948, -1.3737, 0.0925354)
+mesh = SubResource("CylinderMesh_gj8w7")
 
 [node name="StandardTurretBase" type="Node3D" parent="."]
 
@@ -41,22 +50,57 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.2681, 0)
 _building_camera = NodePath("../BuildCamera3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.948485, -0.0413988, 0.314106, 0.00848513, 0.99439, 0.105437, -0.316709, -0.0973404, 0.943515, -5.27732, 12.6201, 0)
+transform = Transform3D(0.948485, -0.0413987, 0.314106, -0.151006, 0.812496, 0.563069, -0.27852, -0.581494, 0.764389, -5.27732, 12.6201, 0)
+light_color = Color(0.575621, 0.548254, 9.62615e-07, 1)
+light_energy = 4.0
+shadow_enabled = true
 
 [node name="BuildCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.9637, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 47.4177, 0)
 projection = 1
 size = 66.786
 
-[node name="BuildSpot" parent="." instance=ExtResource("2_fujgv")]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fujgv")
+
+[node name="BuildLocations" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.150825, 0)
+
+[node name="BuildSpot" parent="BuildLocations" instance=ExtResource("2_fujgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8843, 0.146836, 0.299128)
 
-[node name="BuildSpot4" parent="." instance=ExtResource("2_fujgv")]
+[node name="BuildSpot4" parent="BuildLocations" instance=ExtResource("2_fujgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1157, 0.146836, 0.299128)
 
-[node name="BuildSpot2" parent="." instance=ExtResource("2_fujgv")]
+[node name="BuildSpot12" parent="BuildLocations" instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1157, 0.146836, 0.299128)
+
+[node name="BuildSpot2" parent="BuildLocations" instance=ExtResource("2_fujgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115682, 0.146836, 16.2991)
 
-[node name="BuildSpot3" parent="." instance=ExtResource("2_fujgv")]
+[node name="BuildSpot11" parent="BuildLocations" instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115682, 0.146836, 32.2991)
+
+[node name="BuildSpot3" parent="BuildLocations" instance=ExtResource("2_fujgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115682, 0.146836, -15.7009)
+
+[node name="BuildSpot5" parent="BuildLocations" instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115682, 0.146836, -32.7009)
+
+[node name="BuildSpot6" parent="BuildLocations" instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1157, 0.146836, -15.7009)
+
+[node name="BuildSpot7" parent="BuildLocations" instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1157, 0.146836, 15.2991)
+
+[node name="BuildSpot8" parent="BuildLocations" instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8843, 0.146836, 15.2991)
+
+[node name="BuildSpot9" parent="BuildLocations" instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8843, 0.146836, -15.7009)
+
+[node name="BuildSpot10" parent="BuildLocations" instance=ExtResource("2_fujgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8843, 0.146836, 0.299099)
+
+[node name="ForceField_Area3D" parent="." instance=ExtResource("3_2hn1u")]

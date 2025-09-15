@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cw564qmankkyx"]
+[gd_scene load_steps=10 format=3 uid="uid://cw564qmankkyx"]
 
 [ext_resource type="Script" uid="uid://ckfqsdw7e36c3" path="res://Game/Scripts/turret_character.gd" id="1_8qsus"]
 [ext_resource type="PackedScene" uid="uid://dnupi7fhcfwr2" path="res://Game/Scenes/standard_turret_art.tscn" id="1_ng2sk"]
@@ -12,6 +12,9 @@ radius = 1.2036
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8v08b"]
 size = Vector3(2.65405, 0.294922, 0.529297)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x46a0"]
+bg_color = Color(0.0262533, 0.0449922, 0.145252, 1)
 
 [node name="TurretCharacter" type="CharacterBody3D"]
 script = ExtResource("1_8qsus")
@@ -53,3 +56,74 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("5_qagab")
 _building_pop_scene = ExtResource("6_x46a0")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 512.0
+offset_top = -112.0
+offset_right = -512.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x46a0")
+
+[node name="HealthAmmoEnergy" type="HBoxContainer" parent="CanvasLayer/HUD/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/HUD/Panel/HealthAmmoEnergy"]
+modulate = Color(0.855457, 0, 0.135306, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Health"
+horizontal_alignment = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD/Panel/HealthAmmoEnergy"]
+unique_name_in_owner = true
+modulate = Color(0, 0.8738, 0.473634, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="AmmoLabel" type="Label" parent="CanvasLayer/HUD/Panel/HealthAmmoEnergy"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "99"
+horizontal_alignment = 2
+
+[node name="AmmoReloadLabel" type="Label" parent="CanvasLayer/HUD/Panel/HealthAmmoEnergy"]
+unique_name_in_owner = true
+modulate = Color(0.027, 0.043, 0.145, 1)
+layout_mode = 2
+text = "+1"
+
+[node name="EnergyBar" type="ProgressBar" parent="CanvasLayer/HUD/Panel/HealthAmmoEnergy"]
+unique_name_in_owner = true
+modulate = Color(0.943595, 0.740173, 1.54018e-06, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="EnergyLabel" type="Label" parent="CanvasLayer/HUD/Panel/HealthAmmoEnergy"]
+modulate = Color(0.855457, 0, 0.135306, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Energy"
+
+[node name="AmmoReloadTimer" type="Timer" parent="CanvasLayer/HUD/Panel/HealthAmmoEnergy"]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="CanvasLayer/HUD/Panel/HealthAmmoEnergy/AmmoReloadTimer" to="." method="_on_ammo_reload_timer_timeout"]

@@ -1,6 +1,8 @@
 extends Area3D
 class_name BuildSpot
 
+@onready var highlight_building_root:Node3D = get_node("%BaseSelectedHighlight")
+
 
 var spot_taken:bool = false
 
@@ -19,3 +21,11 @@ func spawn_new_building(pBuilding:String = "") -> void:
 		spot_taken = true		
 		monitorable = false
 		monitoring = false
+
+
+func _on_mouse_entered() -> void:
+	if !spot_taken:
+		highlight_building_root.visible = true
+
+func _mouse_exit() -> void:
+	highlight_building_root.visible = false

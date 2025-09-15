@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtli4mtqhswl3"]
+
+[ext_resource type="Script" uid="uid://bcak0htqcxdbi" path="res://Game/Scripts/forcefield_area3d.gd" id="1_dbr15"]
+
+[sub_resource type="Gradient" id="Gradient_fujgv"]
+offsets = PackedFloat32Array(0, 0.585809, 1)
+colors = PackedColorArray(0.718943, 0.312746, 4.81307e-07, 1, 0.239299, 0.304499, 0.665744, 1, 0.643771, 0, 0.206038, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2hn1u"]
+frequency = 0.0471
+fractal_lacunarity = 5.225
+fractal_gain = 0.975
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j1s4i"]
+width = 128
+height = 128
+color_ramp = SubResource("Gradient_fujgv")
+noise = SubResource("FastNoiseLite_2hn1u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnegi"]
+transparency = 1
+cull_mode = 2
+shading_mode = 2
+albedo_color = Color(0.265, 0.238, 1, 0.386)
+albedo_texture = SubResource("NoiseTexture2D_j1s4i")
+emission_enabled = true
+emission = Color(0.656486, 0.656702, 0.931054, 1)
+emission_energy_multiplier = 1.98
+emission_operator = 1
+emission_texture = SubResource("NoiseTexture2D_j1s4i")
+rim_enabled = true
+rim = 0.66
+rim_tint = 0.91
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p5tjr"]
+radius = 40.1114
+
+[node name="ForceField_Area3D" type="Area3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_dbr15")
+
+[node name="Forcfield" type="CSGSphere3D" parent="."]
+unique_name_in_owner = true
+cast_shadow = 0
+radius = 40.138
+radial_segments = 32
+rings = 32
+smooth_faces = false
+material = SubResource("StandardMaterial3D_hnegi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_p5tjr")
