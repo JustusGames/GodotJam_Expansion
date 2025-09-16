@@ -14,14 +14,13 @@ fractal_gain = 0.975
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j1s4i"]
 width = 128
 height = 128
-color_ramp = SubResource("Gradient_fujgv")
 noise = SubResource("FastNoiseLite_2hn1u")
+color_ramp = SubResource("Gradient_fujgv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnegi"]
 transparency = 1
 cull_mode = 2
-shading_mode = 2
-albedo_color = Color(0.265, 0.238, 1, 0.386)
+albedo_color = Color(0.26479155, 0.2374612, 1, 0.20500001)
 albedo_texture = SubResource("NoiseTexture2D_j1s4i")
 emission_enabled = true
 emission = Color(0.656486, 0.656702, 0.931054, 1)
@@ -46,7 +45,6 @@ cast_shadow = 0
 radius = 40.138
 radial_segments = 32
 rings = 32
-smooth_faces = false
 material = SubResource("StandardMaterial3D_hnegi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

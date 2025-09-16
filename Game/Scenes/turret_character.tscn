@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw564qmankkyx"]
+[gd_scene load_steps=9 format=3 uid="uid://cw564qmankkyx"]
 
 [ext_resource type="Script" uid="uid://ckfqsdw7e36c3" path="res://Game/Scripts/turret_character.gd" id="1_8qsus"]
 [ext_resource type="PackedScene" uid="uid://dnupi7fhcfwr2" path="res://Game/Scenes/standard_turret_art.tscn" id="1_ng2sk"]
@@ -8,29 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://c0c3cphfu7a2g" path="res://Interface/Scenes/building_select_popup.tscn" id="6_x46a0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8qsus"]
-radius = 1.2036
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8v08b"]
-size = Vector3(2.65405, 0.294922, 0.529297)
+radius = 2.2085664
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x46a0"]
 bg_color = Color(0.0262533, 0.0449922, 0.145252, 1)
 
 [node name="TurretCharacter" type="CharacterBody3D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_8qsus")
 _basic_bullet = ExtResource("2_8v08b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05991, 1.37174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05991, 0.07455361)
 shape = SubResource("SphereShape3D_8qsus")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.539382, 1.53091, -1.87769)
-shape = SubResource("BoxShape3D_8v08b")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.693481, 1.53091, -1.87769)
-shape = SubResource("BoxShape3D_8v08b")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true

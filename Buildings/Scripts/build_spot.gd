@@ -18,6 +18,7 @@ func spawn_new_building(pBuilding:String = "") -> void:
 		var _building_inst:Area3D = _load_building.instantiate()
 		get_tree().root.add_child(_building_inst)
 		_building_inst.global_position = self.global_position
+		Global.add_to_targetable_locations(self.global_position)
 		spot_taken = true		
 		monitorable = false
 		monitoring = false

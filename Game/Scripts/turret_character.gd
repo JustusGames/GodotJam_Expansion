@@ -45,6 +45,7 @@ var _building_cost_dict:Dictionary = {
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_HUD.connect("building_placed",_on_building_place)
+	Global.add_to_targetable_locations(self.global_position)
 
 func _on_building_place(pBuilding:String):
 	if is_instance_valid(_selected_build_spot):
@@ -143,6 +144,13 @@ func _on_ammo_reload_timer_timeout() -> void:
 	if Ammo_Count < Max_Ammo_Count:
 		Ammo_Count += Ammo_Reload_Amount + _building_count_dict["Ammo"]
 		_HUD.show_ammmo_reload_amount(Ammo_Reload_Amount + _building_count_dict["Ammo"])
+
+func Hit_Registered(_pDamage:float = 1.0):
+	if Current_Health >= 1:
+		Current_Health -= _pDamage
+		_main_camera.period = 0.03
+		_main_camera.magnitude = 0.02
+		_main_camera.CameraShake()
 
 func CameraLook(Movement: Vector2):
 	if !_in_build_mode:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnrvd8ht0u4ik"]
+[gd_scene load_steps=10 format=3 uid="uid://cnrvd8ht0u4ik"]
 
 [ext_resource type="PackedScene" uid="uid://cw564qmankkyx" path="res://Game/Scenes/turret_character.tscn" id="1_gj8w7"]
 [ext_resource type="PackedScene" uid="uid://cr6ik3hlc2dq6" path="res://Buildings/Scenes/build_spot.tscn" id="2_fujgv"]
 [ext_resource type="PackedScene" uid="uid://dtli4mtqhswl3" path="res://Game/Scenes/force_field_area_3d.tscn" id="3_2hn1u"]
+[ext_resource type="PackedScene" uid="uid://br28rgoqvgog0" path="res://Enemies/Scenes/basic_flyer.tscn" id="4_j1s4i"]
+[ext_resource type="PackedScene" uid="uid://cgbpcs1vnk6cv" path="res://Game/VFX/explosion_particles.tscn" id="5_hnegi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqeow"]
 albedo_color = Color(0.207843, 1, 0, 1)
@@ -104,3 +106,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8843, 0.146836, -15.7009)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8843, 0.146836, 0.299099)
 
 [node name="ForceField_Area3D" parent="." instance=ExtResource("3_2hn1u")]
+visible = false
+
+[node name="BasicFlyer" parent="." instance=ExtResource("4_j1s4i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 9.94936, -21.26801)
+
+[node name="BasicFlyer2" parent="." instance=ExtResource("4_j1s4i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 9.94936, -5.853346)
+
+[node name="BasicFlyer3" parent="." instance=ExtResource("4_j1s4i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 9.94936, 10.666233)
+
+[node name="BasicFlyer4" parent="." instance=ExtResource("4_j1s4i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 21.811234, -21.26801)
+
+[node name="BasicFlyer5" parent="." instance=ExtResource("4_j1s4i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 21.811234, -5.853346)
+
+[node name="BasicFlyer6" parent="." instance=ExtResource("4_j1s4i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 21.811234, 10.666233)
+
+[node name="BasicFlyer7" parent="." instance=ExtResource("4_j1s4i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 31.501919, -21.26801)
+
+[node name="BasicFlyer8" parent="." instance=ExtResource("4_j1s4i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 31.501919, -5.853346)
+
+[node name="BasicFlyer9" parent="." instance=ExtResource("4_j1s4i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 31.501919, 10.666233)
+
+[node name="ExplosionParticles" parent="." instance=ExtResource("5_hnegi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.06444, 38.09913, 14.529587)
