@@ -15,6 +15,7 @@ var _hit_shake_magnitude = 0.4
 var _look_at_target:bool = false
 var _look_at_location:Vector3 = Vector3()
 var initial_transform:Transform3D 
+var _new_fire_timer:Timer = null
 
 func _physics_process(_delta: float) -> void:
 
@@ -52,21 +53,21 @@ func _destroy():
 	tween.tween_property(self,"scale",n,.1)
 	tween.tween_callback(queue_free)
 
+
 func find_target():
 	var _targets:Array[Vector3] = Global.get_targetable_locations()
 
 	if _targets.size() >= 1:
 		_look_at_target = true
 		var _random:int = randi_range(0,_targets.size()-1)
-		_look_at_location = _targets[_random]
+		_look_at_location = _targets[_random]		
 		
-		var _new_timer:Timer = null
-		if !is_instance_valid(_new_timer):
-			_new_timer = Timer.new()
-			_new_timer.wait_time = randf_range(.4,2)
-			_new_timer.connect("timeout",_fire)
-			add_child(_new_timer)
-			_new_timer.start()
+		if !is_instance_valid(_new_fire_timer):
+			_new_fire_timer = Timer.new()
+			_new_fire_timer.wait_time = randf_range(1,2)
+			_new_fire_timer.connect("timeout",_fire)
+			add_child(_new_fire_timer)
+			_new_fire_timer.start()
 
 func _impact_shake() -> void:	
 	var elapsed_time = 0.0

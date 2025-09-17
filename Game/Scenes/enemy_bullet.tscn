@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://xwmyjjrnjhj3" path="res://Game/VFX/impact_particles.tscn" id="2_ov4cr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1rlgt"]
-radius = 0.8662831
+radius = 0.97703516
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov4cr"]
 albedo_color = Color(0.9999997, 0.20942506, 0.3788902, 1)

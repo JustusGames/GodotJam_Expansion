@@ -52,10 +52,17 @@ func _on_building_place(pBuilding:String):
 		if _selected_build_spot.spot_taken == false and Current_Energy >= _building_cost_dict[pBuilding]:
 			Current_Energy -= _building_cost_dict[pBuilding]
 			_selected_build_spot.spawn_new_building(pBuilding)
+			if !_selected_build_spot.is_connected("building_was_destroyed",_on_building_destroyed):
+				_selected_build_spot.connect("building_was_destroyed",_on_building_destroyed.bind(pBuilding))
 			if pBuilding == "Ammo":
 				update_reload_wait()				
 			_building_count_dict[pBuilding] += 1
 			_selected_build_spot = null
+
+func _on_building_destroyed(_pBuilding:String):
+	if _pBuilding == "Ammo":
+		_ammo_reload_timer.wait_time += .2
+	_building_count_dict[_pBuilding] -= 1	
 
 func _physics_process(_delta: float) -> void:
 	
@@ -95,6 +102,9 @@ func _update_hud(delta:float):
 	if Ammo_Count <= Max_Ammo_Count:
 		_HUD.update_ammo(Ammo_Count)
 
+func _heal_player(pHealAmount:float = 1.0):
+	Current_Health += pHealAmount + _building_count_dict["Health"]
+
 func _primary_fire_held(delta):
 	if Input.is_action_pressed("Primary Fire") and _allow_firing and Ammo_Count > 0:
 		if is_instance_valid(_turret):
@@ -115,13 +125,15 @@ func _input(event: InputEvent) -> void:
 		CameraLook(MouseEvent)
 	
 	if event.is_action_released("Left Click"):
-		if is_instance_valid(_looked_at_object) and _looked_at_object.name.begins_with("BuildSpot"):
-			if _looked_at_object.spot_taken == false:
-				_HUD.show_menu_at_mouse(event)
-				_selected_build_spot = _looked_at_object
-		else:
-			_HUD.remove_menus()
-			_selected_build_spot = null
+		match current_turret_state:
+			turret_states.building_mode:
+				if is_instance_valid(_looked_at_object) and _looked_at_object.name.begins_with("BuildSpot"):
+					if _looked_at_object.spot_taken == false:
+						_HUD.show_menu_at_mouse(event)
+						_selected_build_spot = _looked_at_object
+				else:
+					_HUD.remove_menus()
+					_selected_build_spot = null
 	
 	if event.is_action_pressed("SwitchCamera"):
 		if is_instance_valid(_building_camera):
@@ -129,11 +141,12 @@ func _input(event: InputEvent) -> void:
 				turret_states.turret_mode:
 					_building_camera.current = true
 					_main_camera.current = false
-					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE					
 					current_turret_state = turret_states.building_mode
 				turret_states.building_mode:
 					_main_camera.current = true
 					_building_camera.current = false
+					_HUD.remove_menus()
 					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 					current_turret_state = turret_states.turret_mode
 
@@ -142,11 +155,14 @@ func update_reload_wait() -> void:
 
 func _on_ammo_reload_timer_timeout() -> void:
 	if Ammo_Count < Max_Ammo_Count:
-		Ammo_Count += Ammo_Reload_Amount + _building_count_dict["Ammo"]
-		_HUD.show_ammmo_reload_amount(Ammo_Reload_Amount + _building_count_dict["Ammo"])
+		var _clamp_reload = clamp(clamp(Ammo_Reload_Amount,1,99) + _building_count_dict["Ammo"],1,99)
+		Ammo_Count += _clamp_reload
+		_HUD.show_ammmo_reload_amount(_clamp_reload)
 
 func Hit_Registered(_pDamage:float = 1.0):
-	if Current_Health >= 1:
+	if Current_Health <= 0:
+		print("You're Dead")
+	else:
 		Current_Health -= _pDamage
 		_main_camera.period = 0.03
 		_main_camera.magnitude = 0.02
@@ -159,3 +175,6 @@ func CameraLook(Movement: Vector2):
 		rotate_object_local(Vector3(0,1,0),-_camera_rotation.x)
 		rotate_object_local(Vector3(1,0,0), -_camera_rotation.y)
 		_camera_rotation.y = clamp(_camera_rotation.y,-1.5,1.2)
+
+func _on_heal_timer_timeout() -> void:
+	_heal_player(0.0)

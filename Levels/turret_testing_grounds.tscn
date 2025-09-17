@@ -1,51 +1,120 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnrvd8ht0u4ik"]
+[gd_scene load_steps=14 format=3 uid="uid://cnrvd8ht0u4ik"]
 
 [ext_resource type="PackedScene" uid="uid://cw564qmankkyx" path="res://Game/Scenes/turret_character.tscn" id="1_gj8w7"]
 [ext_resource type="PackedScene" uid="uid://cr6ik3hlc2dq6" path="res://Buildings/Scenes/build_spot.tscn" id="2_fujgv"]
+[ext_resource type="Script" uid="uid://dtl3wvji7il5f" path="res://Game/Scripts/build_camera_3d.gd" id="2_hnegi"]
 [ext_resource type="PackedScene" uid="uid://dtli4mtqhswl3" path="res://Game/Scenes/force_field_area_3d.tscn" id="3_2hn1u"]
 [ext_resource type="PackedScene" uid="uid://br28rgoqvgog0" path="res://Enemies/Scenes/basic_flyer.tscn" id="4_j1s4i"]
-[ext_resource type="PackedScene" uid="uid://cgbpcs1vnk6cv" path="res://Game/VFX/explosion_particles.tscn" id="5_hnegi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqeow"]
-albedo_color = Color(0.207843, 1, 0, 1)
+albedo_color = Color(0.4195712, 0.5116678, 0.17184411, 1)
 roughness = 0.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_gj8w7"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_oqeow"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnegi"]
+albedo_color = Color(0.7947191, 0.4843105, 0.43380594, 1)
+metallic = 0.93
+roughness = 0.57
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gj8w7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5tjr"]
+albedo_color = Color(0.6461008, 0.706487, 0.44471303, 1)
+metallic = 1.0
+roughness = 0.57
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3rti"]
+albedo_color = Color(0.5127564, 0.38924325, 0.23619345, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hnegi"]
+material = SubResource("StandardMaterial3D_g3rti")
+top_radius = 0.8
+bottom_radius = 0.8
+
 [sub_resource type="Environment" id="Environment_fujgv"]
 background_mode = 1
-background_color = Color(0.597023, 0.304808, 0.698917, 1)
+background_color = Color(0.972549, 0.78431374, 0.65882355, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.766843, 0.23733434, 0.16198674, 1)
+ambient_light_energy = 0.55
 
 [node name="WhiteBox" type="Node3D"]
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(99.4627, 0.000273431, 0.0350008, -0.128341, 0.211852, -0.158043, -0.0265295, 0.000253576, 131.999, -53.8762, -0.167289, 58.1313)
+transform = Transform3D(99.4627, 0.000273431, 0.0350008, -0.128341, 0.211852, -0.158043, -0.0265295, 0.000253576, 131.999, -53.876667, -2.6263173, 58.132183)
 use_collision = true
 material = SubResource("StandardMaterial3D_oqeow")
 
-[node name="CSGMesh3D22" type="CSGMesh3D" parent="."]
-transform = Transform3D(80, 0, 0, 0, 1.523, 0, 0, 0, 80, 0.0531948, -1.3737, 0.0925354)
-mesh = SubResource("CylinderMesh_gj8w7")
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, 0.9992932, 0.6125164, 0.00019297004)
+use_collision = true
+material = SubResource("StandardMaterial3D_oqeow")
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, -0.99998575, -0.59895515, -0.0002065301)
+use_collision = true
+material = SubResource("StandardMaterial3D_oqeow")
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, -0.0003489256, 0.7519398, 0.99885976)
+use_collision = true
+material = SubResource("StandardMaterial3D_oqeow")
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, 0.99893963, 1.3574629, 0.99905944)
+use_collision = true
+material = SubResource("StandardMaterial3D_oqeow")
+
+[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, -1.0003393, 0.14599133, 0.99865997)
+use_collision = true
+material = SubResource("StandardMaterial3D_oqeow")
+
+[node name="CSGPolygon3D7" type="CSGPolygon3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, 0.0003581047, -0.73777676, -0.99863625)
+use_collision = true
+material = SubResource("StandardMaterial3D_oqeow")
+
+[node name="CSGPolygon3D8" type="CSGPolygon3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, 0.99964666, -0.13225365, -0.99843657)
+use_collision = true
+material = SubResource("StandardMaterial3D_oqeow")
+
+[node name="CSGPolygon3D9" type="CSGPolygon3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, -0.9996323, -1.3437252, -0.9988361)
+use_collision = true
+material = SubResource("StandardMaterial3D_oqeow")
 
 [node name="StandardTurretBase" type="Node3D" parent="."]
 
 [node name="CSGMesh3D18" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(3.88781, 0, 0, 0, 3.88781, 0, 0, 0, 3.88781, 0.0531948, 6.18548, 0.0925354)
 mesh = SubResource("SphereMesh_oqeow")
+material = SubResource("StandardMaterial3D_hnegi")
 
 [node name="CSGMesh3D19" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(4.43323, 0, 0, 0, 3.07744, 0, 0, 0, 4.43323, 0.0599859, 3.05598, 0.0894531)
 mesh = SubResource("CylinderMesh_gj8w7")
+material = SubResource("StandardMaterial3D_p5tjr")
 
 [node name="CSGMesh3D21" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(2.50916, 0, 0, 0, 1.15576, 0, 0, 0, 2.50916, 0.0531948, 6.99668, 0.0925354)
 mesh = SubResource("CylinderMesh_gj8w7")
+material = SubResource("StandardMaterial3D_p5tjr")
 
 [node name="CSGMesh3D20" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(5.36943, 0, 0, 0, 1.4793, 0, 0, 0, 5.36943, 0.0531948, 0.283624, 0.0925354)
 mesh = SubResource("CylinderMesh_gj8w7")
+material = SubResource("StandardMaterial3D_hnegi")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="StandardTurretBase"]
+transform = Transform3D(80, 0, 0, 0, 1.523, 0, 0, 0, 80, 0.0531948, -1.3737, 0.0925354)
+mesh = SubResource("CylinderMesh_gj8w7")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="StandardTurretBase"]
+transform = Transform3D(80, 0, 0, 0, 3.386675, 0, 0, 0, 80, 0.0531948, -4.5436983, 0.0925354)
+mesh = SubResource("CylinderMesh_hnegi")
 
 [node name="TurretCharacter" parent="." node_paths=PackedStringArray("_building_camera") instance=ExtResource("1_gj8w7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.2681, 0)
@@ -53,8 +122,6 @@ _building_camera = NodePath("../BuildCamera3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.948485, -0.0413987, 0.314106, -0.151006, 0.812496, 0.563069, -0.27852, -0.581494, 0.764389, -5.27732, 12.6201, 0)
-light_color = Color(0.575621, 0.548254, 9.62615e-07, 1)
-light_energy = 4.0
 shadow_enabled = true
 
 [node name="BuildCamera3D" type="Camera3D" parent="."]
@@ -62,6 +129,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 47.4177, 0)
 projection = 1
 size = 66.786
+script = ExtResource("2_hnegi")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fujgv")
@@ -115,7 +183,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.1
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 9.94936, -5.853346)
 
 [node name="BasicFlyer3" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 9.94936, 10.666233)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 58.986565, 9.94936, 10.666233)
 
 [node name="BasicFlyer4" parent="." instance=ExtResource("4_j1s4i")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 21.811234, -21.26801)
@@ -134,6 +202,3 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.1
 
 [node name="BasicFlyer9" parent="." instance=ExtResource("4_j1s4i")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 31.501919, 10.666233)
-
-[node name="ExplosionParticles" parent="." instance=ExtResource("5_hnegi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.06444, 38.09913, 14.529587)

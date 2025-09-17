@@ -117,4 +117,10 @@ unique_name_in_owner = true
 wait_time = 5.0
 autostart = true
 
+[node name="HealTimer" type="Timer" parent="CanvasLayer/HUD/Panel/HealthAmmoEnergy"]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="CanvasLayer/HUD/Panel/HealthAmmoEnergy/AmmoReloadTimer" to="." method="_on_ammo_reload_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/HUD/Panel/HealthAmmoEnergy/HealTimer" to="." method="_on_heal_timer_timeout"]
