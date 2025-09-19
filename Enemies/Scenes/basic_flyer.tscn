@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://br28rgoqvgog0"]
 
 [ext_resource type="Script" uid="uid://bhs6o0ex8v32w" path="res://Enemies/Scripts/enemy_basic_flyer.gd" id="1_kfdm6"]
-[ext_resource type="PackedScene" uid="uid://bsmhkyeraywr6" path="res://Game/Scenes/enemy_bullet.tscn" id="2_hgaop"]
+[ext_resource type="PackedScene" uid="uid://bsmhkyeraywr6" path="res://Enemies/Projectiles/enemy_bullet.tscn" id="2_hgaop"]
 [ext_resource type="PackedScene" uid="uid://cgbpcs1vnk6cv" path="res://Game/VFX/explosion_particles.tscn" id="2_ja0i8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5xm6"]
@@ -69,8 +69,12 @@ size = Vector3(2.0097656, 1.055747, 1.3524857)
 size = Vector3(6.5388184, 1.7091942, 3.5285034)
 
 [node name="BasicFlyer" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_kfdm6")
-_basic_bullet = ExtResource("2_hgaop")
+_enemy_body_root_path = NodePath("Body")
+_enemy_body_hit_root_path = NodePath("Body/BodyHIT")
+Projectile = ExtResource("2_hgaop")
 _explosion_particles = ExtResource("2_ja0i8")
 
 [node name="Body" type="Node3D" parent="."]

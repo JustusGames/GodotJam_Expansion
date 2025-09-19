@@ -15,7 +15,7 @@ func Hit_Registered(_pDamage:float = 1.0):
 	if Current_Health <= 0:
 		_destroy()
 	else:
-		Current_Health -= 1
+		Current_Health -= _pDamage
 		_building_hit_root.visible = true
 		await get_tree().create_timer(.1).timeout
 		_building_hit_root.visible = false

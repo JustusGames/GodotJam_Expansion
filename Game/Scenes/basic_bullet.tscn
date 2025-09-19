@@ -18,6 +18,7 @@ emission = Color(1, 0.170784, 0.00133264, 1)
 
 [node name="BasicBullet" type="CharacterBody3D"]
 collision_layer = 0
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_ys43c")
 _impact_particles = ExtResource("2_xjdmg")

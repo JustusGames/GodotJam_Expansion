@@ -1,13 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnrvd8ht0u4ik"]
+[gd_scene load_steps=18 format=3 uid="uid://cnrvd8ht0u4ik"]
 
 [ext_resource type="PackedScene" uid="uid://cw564qmankkyx" path="res://Game/Scenes/turret_character.tscn" id="1_gj8w7"]
+[ext_resource type="PackedScene" uid="uid://cra6kfmxj22h" path="res://Enemies/Scenes/basic_tank.tscn" id="1_hnegi"]
 [ext_resource type="PackedScene" uid="uid://cr6ik3hlc2dq6" path="res://Buildings/Scenes/build_spot.tscn" id="2_fujgv"]
+[ext_resource type="PackedScene" uid="uid://cbwwsqvn7idhh" path="res://Enemies/Scenes/carrier_flyer.tscn" id="2_g3rti"]
 [ext_resource type="Script" uid="uid://dtl3wvji7il5f" path="res://Game/Scripts/build_camera_3d.gd" id="2_hnegi"]
 [ext_resource type="PackedScene" uid="uid://dtli4mtqhswl3" path="res://Game/Scenes/force_field_area_3d.tscn" id="3_2hn1u"]
-[ext_resource type="PackedScene" uid="uid://br28rgoqvgog0" path="res://Enemies/Scenes/basic_flyer.tscn" id="4_j1s4i"]
+[ext_resource type="PackedScene" uid="uid://br28rgoqvgog0" path="res://Enemies/Scenes/basic_flyer.tscn" id="3_wnskb"]
+[ext_resource type="PackedScene" uid="uid://c610okaeoghbs" path="res://Enemies/Scenes/bomber_flyer.tscn" id="5_hnegi"]
+[ext_resource type="PackedScene" uid="uid://jjliiwsy80cm" path="res://Enemies/Scenes/boss_tank.tscn" id="9_1ghh1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqeow"]
-albedo_color = Color(0.4195712, 0.5116678, 0.17184411, 1)
+albedo_color = Color(0.52815026, 0.46948892, 0.16728237, 1)
 roughness = 0.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_oqeow"]
@@ -34,87 +38,72 @@ bottom_radius = 0.8
 
 [sub_resource type="Environment" id="Environment_fujgv"]
 background_mode = 1
-background_color = Color(0.972549, 0.78431374, 0.65882355, 1)
+background_color = Color(0.18401447, 0.08856543, 0.017623652, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.766843, 0.23733434, 0.16198674, 1)
 ambient_light_energy = 0.55
+fog_mode = 1
+fog_light_color = Color(0.46903253, 0.41593587, 0.27281144, 1)
+fog_density = 1.0
+fog_depth_curve = 0.39229238
+fog_depth_begin = 100.0
+fog_depth_end = 400.0
 
 [node name="WhiteBox" type="Node3D"]
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(99.4627, 0.000273431, 0.0350008, -0.128341, 0.211852, -0.158043, -0.0265295, 0.000253576, 131.999, -53.876667, -2.6263173, 58.132183)
+[node name="Terrain" type="CSGBox3D" parent="."]
+transform = Transform3D(99.462685, 0.00027343095, 0.035000786, -0.12834093, 0.21185195, -0.1580429, -0.026529474, 0.00025357585, 131.99892, -6.322955, -13.145977, -6.8631854)
 use_collision = true
-material = SubResource("StandardMaterial3D_oqeow")
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGPolygon3D"]
-transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, 0.9992932, 0.6125164, 0.00019297004)
-use_collision = true
-material = SubResource("StandardMaterial3D_oqeow")
-
-[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGPolygon3D"]
-transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, -0.99998575, -0.59895515, -0.0002065301)
-use_collision = true
-material = SubResource("StandardMaterial3D_oqeow")
-
-[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="CSGPolygon3D"]
-transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, -0.0003489256, 0.7519398, 0.99885976)
-use_collision = true
-material = SubResource("StandardMaterial3D_oqeow")
-
-[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="CSGPolygon3D"]
-transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, 0.99893963, 1.3574629, 0.99905944)
-use_collision = true
-material = SubResource("StandardMaterial3D_oqeow")
-
-[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="CSGPolygon3D"]
-transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, -1.0003393, 0.14599133, 0.99865997)
-use_collision = true
-material = SubResource("StandardMaterial3D_oqeow")
-
-[node name="CSGPolygon3D7" type="CSGPolygon3D" parent="CSGPolygon3D"]
-transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, 0.0003581047, -0.73777676, -0.99863625)
-use_collision = true
-material = SubResource("StandardMaterial3D_oqeow")
-
-[node name="CSGPolygon3D8" type="CSGPolygon3D" parent="CSGPolygon3D"]
-transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, 0.99964666, -0.13225365, -0.99843657)
-use_collision = true
-material = SubResource("StandardMaterial3D_oqeow")
-
-[node name="CSGPolygon3D9" type="CSGPolygon3D" parent="CSGPolygon3D"]
-transform = Transform3D(0.99999994, -1.0363932e-13, 0, 1.4653779e-08, 0.99999994, 0, 2.910383e-11, 0, 0.9999999, -0.9996323, -1.3437252, -0.9988361)
-use_collision = true
+size = Vector3(14.857422, 107.12024, 8.940247)
 material = SubResource("StandardMaterial3D_oqeow")
 
 [node name="StandardTurretBase" type="Node3D" parent="."]
 
 [node name="CSGMesh3D18" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(3.88781, 0, 0, 0, 3.88781, 0, 0, 0, 3.88781, 0.0531948, 6.18548, 0.0925354)
+use_collision = true
 mesh = SubResource("SphereMesh_oqeow")
 material = SubResource("StandardMaterial3D_hnegi")
 
 [node name="CSGMesh3D19" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(4.43323, 0, 0, 0, 3.07744, 0, 0, 0, 4.43323, 0.0599859, 3.05598, 0.0894531)
+use_collision = true
 mesh = SubResource("CylinderMesh_gj8w7")
 material = SubResource("StandardMaterial3D_p5tjr")
 
 [node name="CSGMesh3D21" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(2.50916, 0, 0, 0, 1.15576, 0, 0, 0, 2.50916, 0.0531948, 6.99668, 0.0925354)
+use_collision = true
 mesh = SubResource("CylinderMesh_gj8w7")
 material = SubResource("StandardMaterial3D_p5tjr")
 
 [node name="CSGMesh3D20" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(5.36943, 0, 0, 0, 1.4793, 0, 0, 0, 5.36943, 0.0531948, 0.283624, 0.0925354)
+use_collision = true
 mesh = SubResource("CylinderMesh_gj8w7")
 material = SubResource("StandardMaterial3D_hnegi")
 
 [node name="CSGMesh3D22" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(80, 0, 0, 0, 1.523, 0, 0, 0, 80, 0.0531948, -1.3737, 0.0925354)
+use_collision = true
 mesh = SubResource("CylinderMesh_gj8w7")
 
 [node name="CSGMesh3D23" type="CSGMesh3D" parent="StandardTurretBase"]
 transform = Transform3D(80, 0, 0, 0, 3.386675, 0, 0, 0, 80, 0.0531948, -4.5436983, 0.0925354)
+use_collision = true
 mesh = SubResource("CylinderMesh_hnegi")
+
+[node name="BasicFlyer" parent="StandardTurretBase" instance=ExtResource("1_hnegi")]
+transform = Transform3D(-0.9998007, 0, 0.019965189, 0, 1, 0, -0.019965189, 0, -0.9998007, -27.214844, -1.8912563, -88.25723)
+
+[node name="BasicFlyer2" parent="StandardTurretBase" instance=ExtResource("2_g3rti")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.055779, 39.294113, -100.298996)
+
+[node name="BasicFlyer3" parent="StandardTurretBase" instance=ExtResource("3_wnskb")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 19.813457, 13.447113, -81.89762)
+
+[node name="Bomber" parent="StandardTurretBase" instance=ExtResource("5_hnegi")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 51.56528, 11.849685, -83.45199)
 
 [node name="TurretCharacter" parent="." node_paths=PackedStringArray("_building_camera") instance=ExtResource("1_gj8w7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.2681, 0)
@@ -176,29 +165,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8843, 0.146836, 0.299099)
 [node name="ForceField_Area3D" parent="." instance=ExtResource("3_2hn1u")]
 visible = false
 
-[node name="BasicFlyer" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 9.94936, -21.26801)
-
-[node name="BasicFlyer2" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 9.94936, -5.853346)
-
-[node name="BasicFlyer3" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 58.986565, 9.94936, 10.666233)
-
-[node name="BasicFlyer4" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 21.811234, -21.26801)
-
-[node name="BasicFlyer5" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 21.811234, -5.853346)
-
-[node name="BasicFlyer6" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 21.811234, 10.666233)
-
-[node name="BasicFlyer7" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 31.501919, -21.26801)
-
-[node name="BasicFlyer8" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 31.501919, -5.853346)
-
-[node name="BasicFlyer9" parent="." instance=ExtResource("4_j1s4i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.145016, 31.501919, 10.666233)
+[node name="Tank" parent="." instance=ExtResource("9_1ghh1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -274.89423, -1.6074388, -10.314369)
