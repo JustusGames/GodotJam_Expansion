@@ -42,7 +42,7 @@ stencil_outline_thickness = 0.101
 size = Vector3(4.5908203, 3.7613525, 4.770508)
 
 [node name="AmmoStation" type="StaticBody3D"]
-collision_layer = 16
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_nqnw0")
 
@@ -112,6 +112,7 @@ material = SubResource("StandardMaterial3D_ifgsu")
 [node name="BuildingHIT" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="BuildingHIT"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245605, 0)

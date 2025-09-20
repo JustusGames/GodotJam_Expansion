@@ -48,7 +48,7 @@ stencil_outline_thickness = 0.101
 size = Vector3(5.071289, 2.7857666, 4.963867)
 
 [node name="PowerStation" type="StaticBody3D"]
-collision_layer = 16
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_yykt5")
 

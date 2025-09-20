@@ -20,6 +20,7 @@ emission = Color(1, 0.905882, 0.592157, 1)
 emission_energy_multiplier = 2.02
 
 [node name="BuildSpot" type="Area3D"]
+collision_mask = 0
 script = ExtResource("1_2mc8t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

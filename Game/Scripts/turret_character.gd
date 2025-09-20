@@ -6,6 +6,10 @@ extends CharacterBody3D
 @onready var _HUD:Control = get_node("%HUD")
 @export var _basic_bullet:PackedScene
 @onready var _ammo_reload_timer:Timer = get_node("%AmmoReloadTimer")
+
+@export var _forcefield_path:NodePath
+@onready var _player_forcefield:StaticBody3D = get_node(_forcefield_path)
+
 #################
 enum turret_states {
 	turret_mode,
@@ -57,12 +61,19 @@ func _on_building_place(pBuilding:String):
 			if pBuilding == "Ammo":
 				update_reload_wait()				
 			_building_count_dict[pBuilding] += 1
+			if pBuilding == "Power" and is_instance_valid(_player_forcefield):
+				var _charge_shield_amount:float = _building_count_dict["Power"]
+				_player_forcefield.Increase_Shield_Radius(1)
 			_selected_build_spot = null
 
 func _on_building_destroyed(_pBuilding:String):
 	if _pBuilding == "Ammo":
 		_ammo_reload_timer.wait_time += .2
 	_building_count_dict[_pBuilding] -= 1	
+	if _pBuilding == "Power" and is_instance_valid(_player_forcefield):
+		var _charge_shield_amount:float = _building_count_dict["Power"]
+		_player_forcefield.Decrease_Shield_Radius(1)
+	
 
 func _physics_process(_delta: float) -> void:
 	
@@ -72,9 +83,10 @@ func _physics_process(_delta: float) -> void:
 			var mousePosViewport = get_viewport().get_mouse_position()
 			var camera = _building_camera
 			var rayOrigin = camera.project_ray_origin(mousePosViewport)
-			var rayEnd = rayOrigin+camera.project_ray_normal(mousePosViewport)*100
+			var rayEnd = rayOrigin+camera.project_ray_normal(mousePosViewport)*500
 			var detectionParameters = PhysicsRayQueryParameters3D.new() 
 			detectionParameters.collide_with_areas = true
+			detectionParameters.collide_with_bodies = false
 			detectionParameters.from = rayOrigin
 			detectionParameters.to = rayEnd
 
@@ -95,6 +107,7 @@ func _process(delta: float) -> void:
 func _update_hud(delta:float):
 	var building_total_charge:float = _building_count_dict["Power"] * .003
 	Current_Energy += delta * Energy_Charge_Rate + building_total_charge
+
 	if Current_Energy <= Max_Energy:
 		_HUD.update_energy(Current_Energy)
 	if Current_Health <= Max_Health:

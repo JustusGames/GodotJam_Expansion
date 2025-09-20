@@ -30,8 +30,6 @@ enum _enemy_type_enum {
 @export var _max_fire_delay:float = 2
 
 var _hit_shake_period = 0.15
-var _bullet_spawn_range_min:Vector3 = Vector3(0,0,0)
-var _bullet_spawn_range_max:Vector3 = Vector3(0,0,0)
 var _hit_shake_magnitude = 0.4
 var _look_at_target:bool = false
 var _look_at_location:Vector3 = Vector3()

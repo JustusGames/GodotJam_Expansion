@@ -20,7 +20,7 @@ emission_energy_multiplier = 1.25
 
 [node name="BasicBullet" type="CharacterBody3D"]
 collision_layer = 16
-collision_mask = 16
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_1rlgt")
 _impact_particles = ExtResource("2_ov4cr")

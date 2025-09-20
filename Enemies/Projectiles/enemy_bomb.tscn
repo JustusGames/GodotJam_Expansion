@@ -11,8 +11,8 @@ emission_enabled = true
 emission = Color(0.0110851675, 0.02817984, 0.07791569, 1)
 
 [node name="Bomb" type="RigidBody3D"]
-collision_layer = 0
-collision_mask = 17
+collision_layer = 16
+collision_mask = 5
 gravity_scale = 2.0
 contact_monitor = true
 max_contacts_reported = 2
