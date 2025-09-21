@@ -9,6 +9,7 @@ extends CharacterBody3D
 
 @export var _forcefield_path:NodePath
 @onready var _player_forcefield:StaticBody3D = get_node(_forcefield_path)
+@onready var _indicator_lookat:Marker3D = get_node("%Indicator_LookAt")
 
 #################
 enum turret_states {
@@ -17,8 +18,8 @@ enum turret_states {
 }
 var current_turret_state:int = turret_states.turret_mode
 #################
-var Ammo_Count:int = 99
-var Max_Ammo_Count:int = 99
+var Ammo_Count:int = 250
+var Max_Ammo_Count:int = 250
 var Ammo_Reload_Amount:int = 1
 var Max_Health:float = 100
 var Current_Health:float = Max_Health
@@ -48,6 +49,7 @@ var _building_cost_dict:Dictionary = {
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_HUD.update_energy(Current_Energy)
 	_HUD.connect("building_placed",_on_building_place)
 	Global.add_to_targetable_locations(self.global_position)
 
@@ -74,9 +76,9 @@ func _on_building_destroyed(_pBuilding:String):
 		var _charge_shield_amount:float = _building_count_dict["Power"]
 		_player_forcefield.Decrease_Shield_Radius(1)
 	
-
 func _physics_process(_delta: float) -> void:
 	
+
 	match current_turret_state:
 		turret_states.building_mode:	
 			var space = get_world_3d().direct_space_state
@@ -95,7 +97,13 @@ func _physics_process(_delta: float) -> void:
 				_looked_at_object = rayArray["collider"]
 			else:
 				_looked_at_object = null
+		#turret_states.turret_mode:
+			#for body in _damage_indicator_array:
+				#_indicator_lookat.look_at(body.global_transform.origin, Vector3.UP)
+				#var _new_rotation = -_indicator_lookat.rotation.y
+				#_HUD.spawn_damage_indicator(_new_rotation)
 
+				
 func _process(delta: float) -> void:
 	_update_hud(delta)
 	match current_turret_state:
@@ -154,11 +162,13 @@ func _input(event: InputEvent) -> void:
 				turret_states.turret_mode:
 					_building_camera.current = true
 					_main_camera.current = false
-					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE					
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	
+					_HUD.toggle_reticle(false)				
 					current_turret_state = turret_states.building_mode
 				turret_states.building_mode:
 					_main_camera.current = true
 					_building_camera.current = false
+					_HUD.toggle_reticle(true)
 					_HUD.remove_menus()
 					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 					current_turret_state = turret_states.turret_mode
@@ -191,3 +201,9 @@ func CameraLook(Movement: Vector2):
 
 func _on_heal_timer_timeout() -> void:
 	_heal_player(0.0)
+
+func _on_threat_detection_body_entered(body: CharacterBody3D) -> void:
+	if body.is_in_group("Enemy"):
+		_indicator_lookat.look_at(body.global_transform.origin, Vector3.UP)
+		var _new_rotation = -_indicator_lookat.rotation.y
+		_HUD.spawn_damage_indicator(_new_rotation)

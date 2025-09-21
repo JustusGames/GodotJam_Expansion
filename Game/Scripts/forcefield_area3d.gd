@@ -25,7 +25,11 @@ func Hit_Registered(_pDamage:float = 1):
 		_forcfield_hit.visible = true
 		await get_tree().create_timer(.1).timeout
 		_forcfield_hit.visible = false
-	
+
+func _heal_shield(pHealAmount:float = 1.0):
+	if _current_shield_health < _max_shield_health:
+		_current_shield_health += pHealAmount
+
 func Increase_Shield_Radius(pAmount:float = 1.0):
 	_forcfield_col_shape.shape.radius += pAmount
 	_forcfield_mesh.radius += pAmount
@@ -39,5 +43,5 @@ func Decrease_Shield_Radius(pAmount:float = 1.0):
 func _destroy():
 	queue_free()
 
-func _on_body_entered(body: Node3D) -> void:
-	print(body)
+func _on_body_entered(_body: Node3D) -> void:
+	pass

@@ -4,6 +4,10 @@ extends Control
 @onready var _energybar:ProgressBar = get_node("%EnergyBar")
 @onready var _ammo_count:Label = get_node("%AmmoLabel")
 @onready var _ammo_reload_label:Label = get_node("%AmmoReloadLabel")
+@onready var _reticle:TextureRect = get_node("%Reticle")
+@onready var _reticle_mid:TextureRect = get_node("%Reticle_Mid")
+@onready var _damage_indicators_root:Control = get_node("%DamageIndicators")
+@onready var _damage_indicator:PackedScene = preload("res://Interface/Scenes/damage_indicator.tscn")
 
 @export var _building_pop_scene:PackedScene
 var _current_pop_up:Control = null
@@ -25,12 +29,24 @@ func show_menu_at_mouse(pEvent) -> void:
 func _on_popup_building_selected(pBuilding:String):
 	emit_signal("building_placed",pBuilding)
 
+func toggle_reticle(pSwitch:bool):
+		_reticle.visible = pSwitch
+
 func remove_menus():
 	if is_instance_valid(_current_pop_up):
 		if _current_pop_up.is_connected("popup_building_selected",_on_popup_building_selected):
 			_current_pop_up.disconnect("popup_building_selected",_on_popup_building_selected)
 		_current_pop_up.queue_free()
-	
+
+func spawn_damage_indicator(_pRotation:float):
+	var _new_damage_indicator = _damage_indicator.instantiate()
+	_damage_indicators_root.add_child(_new_damage_indicator)
+	_new_damage_indicator.update_damage_source(_pRotation)
+
+
+func update_damage_indicator(pRotation:float):
+	_damage_indicator.rotation = pRotation
+
 func update_energy(pAmount:float):
 	_energybar.value = pAmount
 

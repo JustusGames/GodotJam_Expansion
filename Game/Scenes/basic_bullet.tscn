@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://di0w0jg8te38f" path="res://Game/Scripts/basic_bullet.gd" id="1_ys43c"]
 [ext_resource type="PackedScene" uid="uid://xwmyjjrnjhj3" path="res://Game/VFX/impact_particles.tscn" id="2_xjdmg"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yp0f2"]
-size = Vector3(0.114258, 0.076416, 1.4397)
+[sub_resource type="SphereShape3D" id="SphereShape3D_xjdmg"]
+radius = 1.343
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ys43c"]
 albedo_color = Color(1, 0.552941, 0.172549, 1)
@@ -24,7 +24,7 @@ script = ExtResource("1_ys43c")
 _impact_particles = ExtResource("2_xjdmg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_yp0f2")
+shape = SubResource("SphereShape3D_xjdmg")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(0.810853, 0, 0, 0, 0.47956, 0, 0, 0, 2.26069, 0, 0, 0)

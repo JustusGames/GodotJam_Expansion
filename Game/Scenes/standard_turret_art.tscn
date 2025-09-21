@@ -115,10 +115,10 @@ mesh = SubResource("BoxMesh_fujgv")
 material = SubResource("StandardMaterial3D_jyu1w")
 
 [node name="FirePoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.678607, 0.723511, -3.16008)
+transform = Transform3D(0.9999939, 0, 0.0034906515, 0, 1, 0, -0.0034906515, 0, 0.9999939, 0.678607, 0.723511, -3.16008)
 
 [node name="FirePoint2" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.650156, 0.723511, -3.18198)
+transform = Transform3D(0.9999939, 0, -0.0034906515, 0, 1, 0, 0.0034906515, 0, 0.9999939, -0.650156, 0.723511, -3.18198)
 
 [node name="FireRateTimer" type="Timer" parent="."]
 unique_name_in_owner = true

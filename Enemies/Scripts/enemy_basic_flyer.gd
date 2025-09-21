@@ -49,7 +49,6 @@ func _ready() -> void:
 	_enemy_bodyhit_root.visible = false
 	_enemy_body_root.visible = true
 	initial_transform = _enemy_body_root.transform 	
-	await get_tree().create_timer(4).timeout
 	find_target()
 
 func Hit_Registered(_pDamage:float = 1):
@@ -77,15 +76,13 @@ func find_target():
 	
 	match Enemy_Type:
 		_enemy_type_enum.basic_flyer:
-			_find_target_and_fire()
-		
+			_find_target()		
 		_enemy_type_enum.auto_turret:
-			_find_target_and_fire()
-
+			_find_target()
 		_enemy_type_enum.small_tank:
 			pass
 
-func _find_target_and_fire():
+func _find_target():
 	var _targets:Array[Vector3] = Global.get_targetable_locations()
 	if _targets.size() >= 1:
 		if Allow_LookAt:
@@ -93,13 +90,6 @@ func _find_target_and_fire():
 		var _random:int = randi_range(0,_targets.size()-1)
 		_look_at_location = _targets[_random]	
 
-		
-		if !is_instance_valid(_new_fire_timer):
-			_new_fire_timer = Timer.new()
-			_new_fire_timer.wait_time = randf_range(_min_fire_delay,_max_fire_delay)
-			_new_fire_timer.connect("timeout",_fire)
-			add_child(_new_fire_timer)
-			_new_fire_timer.start()
 
 func _impact_shake() -> void:	
 	var elapsed_time = 0.0
@@ -115,6 +105,15 @@ func _impact_shake() -> void:
 		await get_tree().process_frame
 	_enemy_body_root.transform = initial_transform
 
+func start_firing() -> void:			
+	if !is_instance_valid(_new_fire_timer):
+		_new_fire_timer = Timer.new()
+		_new_fire_timer.wait_time = randf_range(_min_fire_delay,_max_fire_delay)
+		_new_fire_timer.connect("timeout",_fire)
+		add_child(_new_fire_timer)
+		_new_fire_timer.start()
+		_fire()
+	
 func start_bombing() -> void:
 	if !is_instance_valid(_new_bomb_timer):
 		_new_bomb_timer = Timer.new()
@@ -124,9 +123,13 @@ func start_bombing() -> void:
 		_new_bomb_timer.start()
 		_drop_bomb()
 
-func end_bombing() -> void:
+func end_all_attacks() -> void:
 	if is_instance_valid(_new_bomb_timer):
 		_new_bomb_timer.stop()
+	if is_instance_valid(_new_fire_timer):
+		_new_fire_timer.stop()
+	_look_at_target = false
+	rotation = Vector3(0,0,0)
 
 func _drop_bomb():
 	var _bomb_inst:RigidBody3D = Projectile.instantiate()	
