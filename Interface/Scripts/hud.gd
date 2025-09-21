@@ -5,9 +5,10 @@ extends Control
 @onready var _ammo_count:Label = get_node("%AmmoLabel")
 @onready var _ammo_reload_label:Label = get_node("%AmmoReloadLabel")
 @onready var _reticle:TextureRect = get_node("%Reticle")
-@onready var _reticle_mid:TextureRect = get_node("%Reticle_Mid")
+#@onready var _reticle_mid:TextureRect = get_node("%Reticle_Mid")
 @onready var _damage_indicators_root:Control = get_node("%DamageIndicators")
 @onready var _damage_indicator:PackedScene = preload("res://Interface/Scenes/damage_indicator.tscn")
+@onready var _scrap_display:Label = get_node("%ScrapDisplay")
 
 @export var _building_pop_scene:PackedScene
 var _current_pop_up:Control = null
@@ -55,6 +56,9 @@ func update_health(pAmount:float):
 
 func update_ammo(pAmount:int):
 	_ammo_count.text = str(pAmount)
+
+func update_scrap(pAmount:int):
+	_scrap_display.text = str(pAmount)
 
 func show_ammmo_reload_amount(pAmount:int):
 	_ammo_reload_label.text = "+" + str(pAmount)

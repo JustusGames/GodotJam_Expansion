@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-var _speed:float = 80
+@export var speed:float = 80
 var _steer_force:float = 4
 var _bullet_lifetime:float = 5 #seconds
 var TrackingMissile:bool = false
@@ -11,7 +11,7 @@ var Target:Vector3 = Vector3(0,0,0)
 
 func _physics_process(delta: float) -> void:
 	_bullet_lifetime -= delta
-	velocity = global_transform.basis.z * -_speed
+	velocity = global_transform.basis.z * -speed
 	if TrackingMissile:
 		_steering(delta)
 	var _col = move_and_collide(velocity * delta)	

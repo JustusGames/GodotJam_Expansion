@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnupi7fhcfwr2"]
+[gd_scene load_steps=10 format=3 uid="uid://dnupi7fhcfwr2"]
 
 [ext_resource type="Script" uid="uid://dau6t31p1eyax" path="res://Game/Scripts/standard_turret_design.gd" id="1_b5hph"]
+[ext_resource type="PackedScene" uid="uid://brb25bkywh0e" path="res://Game/Scenes/player_auto_targeting_missiles.tscn" id="2_jyu1w"]
+[ext_resource type="PackedScene" uid="uid://cggu4nthkp6ix" path="res://Game/Scenes/player_rocket.tscn" id="3_frh3c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fujgv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frh3c"]
+albedo_color = Color(0.96126825, 0.4586931, 1.92523e-07, 1)
+metallic = 0.34
+roughness = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_b5hph"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61kvg"]
 albedo_color = Color(0.96126825, 0.4586931, 1.92523e-07, 1)
 metallic = 0.34
 roughness = 0.5
@@ -45,6 +54,30 @@ material = SubResource("StandardMaterial3D_frh3c")
 transform = Transform3D(1.93909, 0, 0, 0, 0.264429, 0.0854944, 0, -0.139488, 0.162072, 0.0140166, 0.00325245, 0.765529)
 mesh = SubResource("BoxMesh_fujgv")
 material = SubResource("StandardMaterial3D_frh3c")
+
+[node name="Level_1_Barrel_Upgrade" type="Node3D" parent="BarrelRoot"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="BarrelRoot/Level_1_Barrel_Upgrade"]
+transform = Transform3D(-8.476034e-08, 0.14134, 0.161468, 0, 0.263444, -0.0866294, -1.93909, -6.178169e-09, -7.057992e-09, -1.4231862, 0.42829055, 0.24999094)
+mesh = SubResource("BoxMesh_b5hph")
+material = SubResource("StandardMaterial3D_61kvg")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="BarrelRoot/Level_1_Barrel_Upgrade"]
+transform = Transform3D(-8.476034e-08, -0.139488, 0.162072, 0, 0.264429, 0.0854944, -1.93909, 6.0972156e-09, -7.084394e-09, -1.13836, 0.42165965, 0.24999094)
+mesh = SubResource("BoxMesh_b5hph")
+material = SubResource("StandardMaterial3D_61kvg")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="BarrelRoot/Level_1_Barrel_Upgrade"]
+transform = Transform3D(-8.476034e-08, 0.14134, 0.161468, 0, 0.263444, -0.0866294, -1.93909, -6.1781686e-09, -7.057992e-09, 1.22231, 0.42829055, 0.24999094)
+mesh = SubResource("BoxMesh_b5hph")
+material = SubResource("StandardMaterial3D_61kvg")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="BarrelRoot/Level_1_Barrel_Upgrade"]
+transform = Transform3D(-8.476034e-08, -0.139488, 0.162072, 0, 0.264429, 0.0854944, -1.93909, 6.0972156e-09, -7.084394e-09, 1.5071368, 0.42165965, 0.24999094)
+mesh = SubResource("BoxMesh_b5hph")
+material = SubResource("StandardMaterial3D_61kvg")
 
 [node name="Body" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -114,11 +147,57 @@ transform = Transform3D(1, 0, 0, 0, 0.180411, 0.953668, 0, -0.166135, 1.03562, -
 mesh = SubResource("BoxMesh_fujgv")
 material = SubResource("StandardMaterial3D_jyu1w")
 
+[node name="Level_1_Upgrade" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="Level_1_Upgrade"]
+transform = Transform3D(1.67606, 0, 0, 0, 0.232138, 0, 0, 0, 0.279643, 1.2149199, 1.1927335, 1.3691883)
+mesh = SubResource("BoxMesh_fujgv")
+material = SubResource("StandardMaterial3D_jyu1w")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="Level_1_Upgrade"]
+transform = Transform3D(1.67606, 0, 0, 0, 0.232138, 0, 0, 0, 0.279643, 1.21492, 1.1927335, -1.2762153)
+mesh = SubResource("BoxMesh_fujgv")
+material = SubResource("StandardMaterial3D_jyu1w")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="Level_1_Upgrade"]
+transform = Transform3D(1, 1.4619895e-08, 6.152632e-09, -1.9538062e-08, 0.6693678, 0.59660184, 4.6096e-09, -0.3344641, 1.1939877, 4.8284313e-08, 1.0673951, -1.104616)
+mesh = SubResource("BoxMesh_fujgv")
+material = SubResource("StandardMaterial3D_b5hph")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="Level_1_Upgrade"]
+transform = Transform3D(-1, 1.4619882e-08, -1.1053436e-07, -1.953806e-08, 0.6693678, 0.5966018, 8.281317e-08, 0.33446407, -1.1939877, -5.023998e-08, 1.0673951, 1.1493565)
+mesh = SubResource("BoxMesh_fujgv")
+material = SubResource("StandardMaterial3D_b5hph")
+
+[node name="Level1_FirePoint_2" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.9999939, 0, 0.0034906515, 0, 1, 0, -0.0034906515, 0, 0.9999939, 1.3618252, 1.2348487, -2.9798815)
+
+[node name="Level1_FirePoint_1" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.9999939, 0, -0.0034906515, 0, 1, 0, 0.0034906515, 0, 0.9999939, -1.2831235, 1.249362, -3.0017815)
+
 [node name="FirePoint" type="Marker3D" parent="."]
-transform = Transform3D(0.9999939, 0, 0.0034906515, 0, 1, 0, -0.0034906515, 0, 0.9999939, 0.678607, 0.723511, -3.16008)
+transform = Transform3D(0.9999939, 0, 0.0034906515, 0, 1, 0, -0.0034906515, 0, 0.9999939, 0.6529422, 0.7857512, -3.2147336)
 
 [node name="FirePoint2" type="Marker3D" parent="."]
-transform = Transform3D(0.9999939, 0, -0.0034906515, 0, 1, 0, 0.0034906515, 0, 0.9999939, -0.650156, 0.723511, -3.18198)
+transform = Transform3D(0.9999939, 0, -0.0034906515, 0, 1, 0, 0.0034906515, 0, 0.9999939, -0.5838465, 0.8307942, -3.2027988)
 
 [node name="FireRateTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="Level_2_Upgrade" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="AutoTargetingTurret" parent="Level_2_Upgrade" instance=ExtResource("2_jyu1w")]
+unique_name_in_owner = true
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.805881, 1.0065539, 0.6666435)
+Projectile = ExtResource("3_frh3c")
+TrackingMissiles = false
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="Level_2_Upgrade"]
+transform = Transform3D(5.2822617e-08, -0.0077108825, -1.8766394, 1.7292303e-08, 1.2444726, -0.011627733, 0.4341448, -4.8630078e-08, 2.2879485e-07, 1.1493565, 1.0673951, 0.8121271)
+mesh = SubResource("BoxMesh_fujgv")
+material = SubResource("StandardMaterial3D_b5hph")

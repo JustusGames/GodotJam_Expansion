@@ -8,6 +8,8 @@ class_name Enemy
 @onready var _enemy_bodyhit_root:Node3D = get_node(_enemy_body_hit_root_path)
 @onready var _fire_point:Marker3D = get_node("%FirePoint")
 @export var Projectile:PackedScene
+@export var Drops_Scrap:bool = true
+@onready var _scrap:PackedScene = preload("res://Game/Scenes/scrap_pickup.tscn")
 
 
 @export var Enemy_Type = _enemy_type_enum.basic_flyer
@@ -66,11 +68,19 @@ func _destroy():
 	get_tree().root.add_child(_new_explosion_fx)
 	_new_explosion_fx.global_position = self.global_position
 	
+	if Drops_Scrap:
+		_release_scrap()
+	
 	var tween = get_tree().create_tween()
 	var n = Vector3(1.2,1.2,1.2)
 	tween.tween_property(self,"scale",n,.1)
 	tween.tween_callback(queue_free)
 
+
+func _release_scrap():
+	var _new_scrap:CharacterBody3D = _scrap.instantiate()	
+	get_tree().root.add_child(_new_scrap)
+	_new_scrap.global_transform = self.global_transform 
 
 func find_target():
 	

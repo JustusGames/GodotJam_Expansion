@@ -2,8 +2,7 @@ extends Enemy
 
 @onready var _launch_points_root:Node3D = get_node("%LaunchPoints")
 
-func _fire():
-	
+func _fire():	
 	var tween = get_tree().create_tween()
 	var n = Vector3(0,10.639,3.274)
 	tween.tween_property(_enemy_body_root,"position",n,.1)

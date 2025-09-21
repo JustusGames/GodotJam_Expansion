@@ -10,7 +10,7 @@ albedo_color = Color(0.88104606, 0.13963693, 0.74128616, 1)
 emission_enabled = true
 emission = Color(0.0110851675, 0.02817984, 0.07791569, 1)
 
-[node name="Bomb" type="RigidBody3D"]
+[node name="Bomb" type="RigidBody3D" groups=["NeedsCleaning"]]
 collision_layer = 16
 collision_mask = 5
 gravity_scale = 2.0

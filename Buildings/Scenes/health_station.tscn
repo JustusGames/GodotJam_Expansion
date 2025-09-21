@@ -51,6 +51,7 @@ size = Vector3(4.9453125, 2.6072998, 5.208008)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_g2aeq")
+Current_Health = 100.0
 
 [node name="Building" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

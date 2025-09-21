@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqqlwv5brlcoe"]
+[gd_scene load_steps=7 format=3 uid="uid://cggu4nthkp6ix"]
 
-[ext_resource type="Script" uid="uid://di0w0jg8te38f" path="res://Game/Scripts/basic_bullet.gd" id="1_rvp12"]
-[ext_resource type="PackedScene" uid="uid://cgbpcs1vnk6cv" path="res://Game/VFX/explosion_particles.tscn" id="2_rvp12"]
+[ext_resource type="Script" uid="uid://di0w0jg8te38f" path="res://Game/Scripts/basic_bullet.gd" id="1_gv0nq"]
+[ext_resource type="PackedScene" uid="uid://cgbpcs1vnk6cv" path="res://Game/VFX/explosion_particles.tscn" id="2_5pwkg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1rlgt"]
 radius = 1.1703331
@@ -25,12 +25,13 @@ emission = Color(0.98577446, 0.4092424, 0.99394065, 1)
 emission_energy_multiplier = 1.55
 
 [node name="Rocket" type="CharacterBody3D" groups=["NeedsCleaning"]]
-collision_layer = 16
-collision_mask = 5
+collision_layer = 0
+collision_mask = 3
 motion_mode = 1
-script = ExtResource("1_rvp12")
+script = ExtResource("1_gv0nq")
+speed = 200.0
 projectile_damage = 20.0
-_impact_particles = ExtResource("2_rvp12")
+_impact_particles = ExtResource("2_5pwkg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07910156, -1.817497)

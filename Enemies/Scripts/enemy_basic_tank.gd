@@ -5,10 +5,11 @@ extends Enemy
 func start_firing() -> void:
 	#super.start_firing()	
 	for turret in Turret_Locations:
-		var _tur:Enemy = turret
-		turret.add_to_group("Enemy")
-		turret.find_target()
-		turret.start_firing()
+		if is_instance_valid(turret):
+			var _tur:Enemy = turret
+			turret.add_to_group("Enemy")
+			turret.find_target()
+			turret.start_firing()
 
 				
 	

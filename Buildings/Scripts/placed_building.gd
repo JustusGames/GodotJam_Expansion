@@ -1,7 +1,7 @@
 extends StaticBody3D
 class_name PlacedBuilding
 
-@export var Current_Health:float = 5
+@export var Current_Health:float = 20
 
 @onready var _building_hit_root:Node3D = get_node("%BuildingHIT")
 var _explosion_particles:PackedScene = preload("res://Game/VFX/explosion_particles.tscn")

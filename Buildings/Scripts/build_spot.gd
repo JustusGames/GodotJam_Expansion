@@ -9,7 +9,8 @@ var spot_taken:bool = false
 var building_dict:Dictionary = {
 	"Power":"res://Buildings/Scenes/power_station.tscn",
 	"Ammo":"res://Buildings/Scenes/ammo_station.tscn",
-	"Health":"res://Buildings/Scenes/health_station.tscn"
+	"Health":"res://Buildings/Scenes/health_station.tscn",
+	"Upgrade":"res://Buildings/Scenes/upgrade_building.tscn"
 }
 
 signal building_was_destroyed(pBuildingString:String)

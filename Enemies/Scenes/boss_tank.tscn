@@ -96,10 +96,10 @@ height = 22.01218
 radius = 20.092285
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g8mrw"]
-radius = 8.233413
+radius = 12.2269335
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8owfg"]
-size = Vector3(17.645508, 22.243862, 128.90039)
+size = Vector3(17.645508, 17.074202, 128.90039)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sqwdo"]
 size = Vector3(28.511719, 20.098492, 89.41797)
@@ -111,16 +111,18 @@ size = Vector3(36.43268, 27.789968, 45.114258)
 height = 10.329651
 radius = 45.51123
 
-[node name="BossTank" type="CharacterBody3D" groups=["Enemy"]]
+[node name="BossTank" type="CharacterBody3D" node_paths=PackedStringArray("Turret_Locations") groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_sqwdo")
+Turret_Locations = [NodePath("Body/AutoTargetingTurret6"), NodePath("Body/AutoTargetingTurret7")]
 _enemy_body_root_path = NodePath("Body")
 _enemy_body_hit_root_path = NodePath("Body/BodyHIT")
 Projectile = ExtResource("2_cfggv")
 Enemy_Type = 8
-Health = 150.0
+Health = 1500.0
 _explosion_particles = ExtResource("3_uwwr5")
+Allow_LookAt = false
 
 [node name="Body" type="Node3D" parent="."]
 
@@ -1175,16 +1177,18 @@ transform = Transform3D(0.65526825, 0.75539625, 0, -0.75539625, 0.65526825, 0, 0
 [node name="AutoTargetingTurret7" parent="Body" groups=["Enemy"] instance=ExtResource("5_cfggv")]
 transform = Transform3D(0.7045351, -0.70966905, 0, 0.70966905, 0.7045351, 0, 0, 0, 1, -57.893227, 44.771744, -25.135303)
 
-[node name="Head" type="CharacterBody3D" parent="."]
+[node name="Head" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Turret_Locations") groups=["Enemy"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54.351917, 0)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_h7vtl")
+Turret_Locations = [NodePath("AutoTargetingTurret"), NodePath("AutoTargetingTurret2"), NodePath("AutoTargetingTurret3"), NodePath("AutoTargetingTurret4"), NodePath("AutoTargetingTurret5")]
 _enemy_body_root_path = NodePath("TankHead")
 _enemy_body_hit_root_path = NodePath("TankHeadHIT")
 Projectile = ExtResource("2_cfggv")
 Enemy_Type = 8
-Health = 200.0
+Health = 800.0
 _explosion_particles = ExtResource("3_uwwr5")
 
 [node name="TankHead" type="Node3D" parent="Head"]
@@ -1396,7 +1400,7 @@ transform = Transform3D(0.86965007, -0.49366862, 0, 0.49366862, 0.86965007, 0, 0
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UndamagedBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.5794, 14.293331, -0.4182434)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.5794, 11.708501, -0.4182434)
 shape = SubResource("BoxShape3D_8owfg")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="UndamagedBody"]
@@ -1428,7 +1432,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.60848, 15.7811775, -0.418
 shape = SubResource("BoxShape3D_8owfg")
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="UndamagedBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.69946, 16.17182, -0.4182434)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.69946, 9.06357, -0.4182434)
 shape = SubResource("BoxShape3D_8owfg")
 
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="UndamagedBody"]
@@ -1456,7 +1460,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.7627, 23.037714, -39.50704
 shape = SubResource("SphereShape3D_g8mrw")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.58293, 23.037714, -39.507042)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.58293, 23.037714, -37.07788)
 shape = SubResource("SphereShape3D_g8mrw")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
@@ -1464,5 +1468,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.58293, 23.037714, 40.9719
 shape = SubResource("SphereShape3D_g8mrw")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.94902, 23.037714, 40.97194)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.94902, 23.037714, 39.494125)
 shape = SubResource("SphereShape3D_g8mrw")

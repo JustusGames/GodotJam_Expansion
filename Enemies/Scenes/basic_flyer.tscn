@@ -75,6 +75,7 @@ script = ExtResource("1_kfdm6")
 _enemy_body_root_path = NodePath("Body")
 _enemy_body_hit_root_path = NodePath("Body/BodyHIT")
 Projectile = ExtResource("2_hgaop")
+Health = 5.0
 _explosion_particles = ExtResource("2_ja0i8")
 
 [node name="Body" type="Node3D" parent="."]

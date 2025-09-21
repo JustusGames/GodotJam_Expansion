@@ -13,6 +13,8 @@ extends Path3D
 @export var Attack_Start_Ratio:float = 0.0
 @export var Attack_End_Ratio:float = 0.0
 @export var Is_Bomber:bool = false
+@export var Is_Carrier:bool = false
+@export var Attack_At_Path_End:bool = false
 
 var _amount_spawned:int = 0
 
@@ -28,15 +30,20 @@ func start_formation_movement(pSpawnAmount:int = 1):
 func _spawn_new_enemy(pEnemyToSpawn:PackedScene):
 	if _amount_spawned < Spawn_Amount:
 		_amount_spawned += 1
-		var _new_enemy_path = EnemyPathFollow.instantiate()
+		var _new_enemy_path:PathFollow3D = EnemyPathFollow.instantiate()
+		_new_enemy_path.Enemy_Speed = Enemy_Speed
 		add_child(_new_enemy_path)
 		if !_new_enemy_path.is_connected("reached_path_end",_enemy_reached_path_end):
 			_new_enemy_path.connect("reached_path_end",_enemy_reached_path_end)
 		_new_enemy_path.loop = false
 		_new_enemy_path.Bomber = Is_Bomber
+		if Is_Carrier:
+			_new_enemy_path.rotation_mode = PathFollow3D.ROTATION_NONE
 		_new_enemy_path.Slow_During_Attack = Slow_During_Attack
 		_new_enemy_path.Attack_Start_Ratio = Attack_Start_Ratio
 		_new_enemy_path.Attack_End_Ratio = Attack_End_Ratio
+		_new_enemy_path.Attack_At_Path_End = Attack_At_Path_End
+		
 		_new_enemy_inst = pEnemyToSpawn.instantiate()
 		_new_enemy_path.add_child(_new_enemy_inst)
 

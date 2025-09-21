@@ -20,13 +20,15 @@ size_flags_vertical = 4
 mouse_filter = 1
 auto_width = true
 auto_height = true
-item_count = 3
+item_count = 4
 item_0/text = "Power"
 item_0/icon = ExtResource("1_uvrpp")
 item_1/text = "Health"
 item_1/icon = ExtResource("1_uvrpp")
 item_2/text = "Ammo"
 item_2/icon = ExtResource("1_uvrpp")
+item_3/text = "Upgrade"
+item_3/icon = ExtResource("1_uvrpp")
 script = ExtResource("2_yaini")
 
 [connection signal="item_selected" from="." to="." method="_on_item_selected"]
